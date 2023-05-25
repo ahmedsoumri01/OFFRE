@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    {% include 'sideBar.html.twig' %}
+    <!-- CONTENT -->
+    <section id="content">
+        {% include 'navbar.html.twig' %}
+
+        <!-- MAIN -->
+        <main id="main-content">
+            <div class="head-title">
+                <div class="left">
+                    <h1>User Information</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="#">User Information</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Dynamic content will be loaded here -->
+            <div class="container">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td>{{ user.password }}</td>
+                        </tr>
+                        <tr>
+                            <th>Role</th>
+                            <td>{{ user.role }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-center justify-content-md-between mt-4">
+                    <a href="{{ path('app_users_index') }}" class="btn btn-primary">Back to List</a>
+                    <a href="{{ path('app_users_edit', {'id': user.id}) }}" class="btn btn-secondary">Edit</a>
+                    {{ include('users/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </main>
+        <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+{% endblock %}

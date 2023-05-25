@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}mange Offre voyage{% endblock %}
+
+{% block body %}
+{% include 'sideBar.html.twig' %}
+
+<!-- CONTENT -->
+<section id="content">
+    {% include 'navbar.html.twig' %}
+
+    <!-- MAIN -->
+    <main id="main-content">
+        <div class="head-title">
+            <div class="left">
+                <h1>manage offre voyage</h1>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li><i class='bx bx-chevron-right' ></i></li>
+                    <li>
+                        <a class="active" href="#">offre voyage</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <!-- Dynamic content will be loaded here -->
+        <div class="container">
+            <div class="col-md-4">
+                <form action="{{ path('app_offrevoyage_index') }}" method="GET">
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control" value="{{ app.request.query.get('startDate') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate" name="endDate" class="form-control" value="{{ app.request.query.get('endDate') }}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+                
+                {% if app.request.query.has('startDate') or app.request.query.has('endDate') %}
+                    <div class="form-group">
+                        <a href="{{ path('app_offrevoyage_index') }}" class="btn btn-secondary">Cancel Filter</a>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <a href="{{ path('app_offrevoyage_new') }}" class="btn btn-success mt-5">Create new offre voyage</a>
+         
+    
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for offrevoyage in offrevoyages %}
+                        <tr>
+                            <td>{{ offrevoyage.id }}</td>
+                            <td>{{ offrevoyage.title }}</td>
+                            <td>{{ offrevoyage.description }}</td>
+                            <td>{{ offrevoyage.prix }} DT</td>
+                            <td>{{ offrevoyage.startDate|date('Y-m-d') }}</td>
+                            <td>{{ offrevoyage.endDate|date('Y-m-d') }}</td>
+                            <td>
+                                <a href="{{ path('app_offrevoyage_show', {'id': offrevoyage.id}) }}" class="btn btn-primary">Show</a>
+                                <a href="{{ path('app_offrevoyage_edit', {'id': offrevoyage.id}) }}" class="btn btn-secondary">Edit</a>
+                                <form action="{{ path('app_offrevoyage_delete', {'id': offrevoyage.id}) }}" method="POST" style="display: inline-block;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ offrevoyage.id) }}">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+
+{% endblock %}

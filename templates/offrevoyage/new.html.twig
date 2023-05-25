@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create New Offrevoyage{% endblock %}
+
+{% block body %}
+{% include 'sideBar.html.twig' %}
+<!-- CONTENT -->
+<section id="content">
+    {% include 'navbar.html.twig' %}
+
+    <!-- MAIN -->
+    <main id="main-content">
+        <div class="head-title">
+            <div class="left">
+                <h1>manage  offres</h1>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li><i class='bx bx-chevron-right' ></i></li>
+                    <li>
+                        <a class="active" href="#">add new offre</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <!-- Dynamic content will be loaded here -->
+        <div class="container">
+            <a href="{{ path('app_offrevoyage_index') }}" class="btn btn-primary mt-3">Back to List</a>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.title) }}
+                            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.prix) }}
+                            {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.start_date) }}
+                            {{ form_widget(form.start_date, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.end_date) }}
+                            {{ form_widget(form.end_date, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.image) }}
+                            {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+    
+                        <button type="submit" class="btn btn-success mt-3">Create</button>
+                    {{ form_end(form) }}
+    
+                
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+   
+{% endblock %}

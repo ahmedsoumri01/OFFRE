@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    {% include 'sideBar.html.twig' %}
+    <!-- CONTENT -->
+    <section id="content">
+        {% include 'navbar.html.twig' %}
+        <!-- MAIN -->
+        <main id="main-content">
+            <div class="head-title">
+                <div class="left">
+                    <h1>Add New User</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right' ></i></li>
+                        <li>
+                            <a class="active" href="#">Add New User</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Dynamic content will be loaded here -->
+            <div class="container">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.email, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Email'}}) }}
+                        {{ form_row(form.password, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Password'}}) }}
+                     
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.role, {'attr': {'class': 'form-select mb-3'}}) }}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Save</button>
+                {{ form_end(form) }}
+
+                <a href="{{ path('app_users_index') }}" class="btn btn-primary mt-3">Back to List</a>
+            </div>
+        </main>
+        <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offrevoyage Show{% endblock %}
+
+{% block body %}
+{% include 'sideBar.html.twig' %}
+<!-- CONTENT -->
+<section id="content">
+    {% include 'navbar.html.twig' %}
+
+    <!-- MAIN -->
+    <main id="main-content">
+        <div class="head-title">
+            <div class="left">
+                <h1>voyage information</h1>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li><i class='bx bx-chevron-right' ></i></li>
+                    <li>
+                        <a class="active" href="#">voyage information</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <!-- Dynamic content will be loaded here -->
+        <div class="container">
+           
+    
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ offrevoyage.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ offrevoyage.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ offrevoyage.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>{{ offrevoyage.prix }} DT</td>
+                    </tr>
+                    <tr>
+                        <th>Start Date</th>
+                        <td>{{ offrevoyage.startDate|date('Y-m-d') }}</td>
+                    </tr>
+                    <tr>
+                        <th>End Date</th>
+                        <td>{{ offrevoyage.endDate|date('Y-m-d') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <div class="text-center">
+                <a href="{{ path('app_offrevoyage_edit', {'id': offrevoyage.id}) }}" class="btn btn-secondary">Edit</a>
+                <form action="{{ path('app_offrevoyage_delete', {'id': offrevoyage.id}) }}" method="POST" style="display: inline-block;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ offrevoyage.id) }}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <a href="{{ path('app_offrevoyage_index') }}" class="btn btn-primary">Back to list</a>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+  
+{% endblock %}

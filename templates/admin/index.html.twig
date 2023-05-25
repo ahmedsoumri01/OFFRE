@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+    {% block body %}
+    {% include 'sideBar.html.twig' %}
+    {% endblock %}
+<!-- CONTENT -->
+<section id="content">
+    {% include 'navbar.html.twig' %}
+    <!-- MAIN -->
+    <main id="main-content">
+        {% include 'admin/dashboard.html.twig' %}
+       
+     
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->
+
+
+
+
+</body>
+</html>

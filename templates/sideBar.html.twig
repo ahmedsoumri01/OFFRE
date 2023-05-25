@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- sideBar.twig.html -->
+<!-- SIDEBAR -->
+<section id="sidebar">
+    <a href="{{ path('app_admin') }}" class="brand">
+        <i class='bx bxs-smile'></i>
+        <span class="text">Admin Dashboard</span>
+    </a>
+    <ul class="side-menu top">
+        <li {% if app.request.attributes.get('_route') == 'app_admin' %}class="active"{% endif %}>
+            <a href="{{ path('app_admin') }}">
+                <i class='bx bxs-dashboard' ></i>
+                <span class="text">Dashboard</span>
+            </a>
+        </li>
+        <li {% if app.request.attributes.get('_route') == 'app_admin_profile' %}class="active"{% endif %}>
+            <a href="{{ path('app_admin_profile') }}">
+                <i class='bx bxs-user' ></i>
+                <span class="text">Mon profil</span>
+            </a>
+        </li>
+        <li {% if app.request.attributes.get('_route') == 'app_offrevoyage_index' %}class="active"{% endif %}>
+            <a href="{{ path('app_offrevoyage_index') }}">
+                <i class='bx bxs-shopping-bag-alt' ></i>
+                <span class="text">gestion offres</span>
+            </a>
+        </li>
+        <li {% if app.request.attributes.get('_route') == 'app_users_index' %}class="active"{% endif %}>
+            <a href="{{ path('app_users_index') }}">
+                <i class='bx bxs-doughnut-chart' ></i>
+                <span class="text">gestion users</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="logout">
+                <i class='bx bxs-log-out-circle' ></i>
+                <span class="text">Logout</span>
+            </a>
+        </li>
+    </ul>
+</section>
+<!-- SIDEBAR -->
+
+{% endblock %}
